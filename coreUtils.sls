@@ -1,31 +1,13 @@
-bzip2-devel.x86_64:
-  pkg:
-    - installed
-emacs:
-  pkg:
-    - installed
-gcc-c++.x86_64:
-  pkg:
-    - installed
-git.x86_64:
-  pkg:
-    - installed
-libcurl.x86_64:
-  pkg:
-    - installed
-libcurl-devel.x86_64:
-  pkg:
-    - installed
-ncurses-devel.x86_64:
-  pkg:
-    - installed
-#R:
-unzip.x86_64:
-  pkg:
-    - installed
-xz-devel.x86_64:
-  pkg:
-    - installed
-zlib-devel.x86_64:
-  pkg:
-    - installed
+coreUtils:
+  pkg.installed:
+    - pkgs:
+      - bzip2-devel.x86_64
+      - emacs
+      - gcc-c++.x86_64
+      - git.x86_64
+      - libcurl.x86_64
+      - libcurl-devel.x86_64
+      - ncurses-devel.x86_64
+      - unzip.x86_64
+      - xz-devel.x86_64
+      - zlib-devel.x86_64
