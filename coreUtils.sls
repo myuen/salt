@@ -20,12 +20,12 @@ ncurses-devel.x86_64:
   pkg:
     - installed
 #R:
-
+unzip.x86_64:
+  pkg:
+    - installed
 xz-devel.x86_64:
   pkg:
     - installed
-
-
 zlib-devel.x86_64:
   pkg:
     - installed
