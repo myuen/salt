@@ -48,7 +48,12 @@ samtools:
     - user: vagrant
     - group: vagrant
   cmd.run:
-    - name: cd /home/vagrant/install/tmp/samtools-1.5 && ./configure --prefix=/usr/local/samtools-1.5 &&  make && sudo make install
+    - name: cd /home/vagrant/install/tmp/samtools-1.5 && ./configure
+      --prefix=/usr/local/samtools-1.5 && make && sudo make install
+    - unless: ls /usr/local/samtools/samtools
+#    - onchanges:
+#      -  archive: /home/vagrant/install/tmp
+
   file.symlink:
     - target: /usr/local/samtools-1.5
     - name: /usr/local/samtools
@@ -58,3 +63,5 @@ samtools:
 #trinity:
 
 #transdecoder:
+
+
