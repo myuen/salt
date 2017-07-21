@@ -23,11 +23,27 @@ blast:
     - name: /usr/local/blast
     - force: True
 
-#bowtie:
+bowtie:
+  archive.extracted:
+    - name: /usr/local/
+    - source: /home/vagrant/install/binaries/bowtie-1.2.1.1-linux-x86_64.zip
+    - user: vagrant
+    - group: vagrant
+  file.symlink:
+    - target: /usr/local/bowtie-1.2.1.1
+    - name: /usr/local/bowtie
+    - force: True
 
-#bowtie2:
-
-#bwa:
+bowtie2:
+  archive.extracted:
+    - name: /usr/local/
+    - source: /home/vagrant/install/binaries/bowtie2-2.3.2-linux-x86_64.zip
+    - user: vagrant
+    - group: vagrant
+  file.symlink:
+    - target: /usr/local/bowtie2-2.3.2
+    - name: /usr/local/bowtie2
+    - force: True
 
 #cd-hit:
 
@@ -38,6 +54,8 @@ blast:
 #IGV:
 
 #oases:
+
+#R:
 
 #sailfish:
 
