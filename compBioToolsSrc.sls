@@ -56,6 +56,7 @@ cdhit-symlink:
     - name: /usr/local/cdhit
     - force: True
 
+### Exonerate
 exonerate-compile:
   archive.extracted:
     - name: /home/vagrant/install/tmp
@@ -76,16 +77,8 @@ exonerate-symlink:
     - name: /usr/local/exonerate
     - force: True
 
-#FastQC:
 
-#IGV:
-
-#oases:
-
-#sailfish:
-
-#salmon:
-
+### Samtools
 samtools-compile:
   archive.extracted:
     - name: /home/vagrant/install/tmp
@@ -105,8 +98,46 @@ samtools-symlink:
     - name: /usr/local/samtools
     - force: True
 
-#trinity:
+### Trinity
+trinity-compile:
+  archive.extracted:
+    - name: /home/vagrant/install/tmp
+    - source: /home/vagrant/install/source/Trinity-v2.4.0.tar.gz
+    - user: vagrant
+    - group: vagrant
+  cmd.run:
+    - name: cd /home/vagrant/install/tmp/trinityrnaseq-Trinity-v2.4.0 && make
+    - unless: ls /usr/local/Trinity/Trinity
+trinity-copy:
+  # trinity don't have make install;  Move entire directory to /usr/local
+  file.copy:
+    - source: /home/vagrant/install/tmp/trinityrnaseq-Trinity-v2.4.0
+    - name: /usr/local/Trinity-v2.4.0
+trinity-symlink:
+  file.symlink:
+    - target: /usr/local/Trinity-v2.4.0
+    - name: /usr/local/Trinity
+    - force: True
 
-#transdecoder:
 
-
+### TransDecoder
+transdecoder-compile:
+  archive.extracted:
+    - name: /home/vagrant/install/tmp
+    - source: /home/vagrant/install/source/v3.0.1.tar.gz
+    - user: vagrant
+    - group: vagrant
+  cmd.run:
+    - name: cd /home/vagrant/install/tmp/TransDecoder-3.0.1 && make
+    - unless: ls /usr/local/TransDecoder/TransDecoder.LongOrfs
+transdecoder-copy:
+  # TransDecoder don't have make install; 
+  # Move entire directory to /usr/local
+  file.copy:
+    - source: /home/vagrant/install/tmp/TransDecoder-3.0.1
+    - name: /usr/local/TransDecoder-3.0.1
+transdecoder-symlink:
+  file.symlink:
+    - target: /usr/local/TransDecoder-3.0.1
+    - name: /usr/local/TransDecoder
+    - force: True
