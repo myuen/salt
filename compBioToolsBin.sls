@@ -8,7 +8,7 @@
 BBMap-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/BBMap_37.36.tar.gz
+    - source: /srv/salt/install/binaries/BBMap_37.36.tar.gz
     - user: vagrant
     - group: vagrant
 BBMap-rename:
@@ -25,7 +25,7 @@ BBMap-symlink:
 blast-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/ncbi-blast-2.6.0+-x64-linux.tar.gz
+    - source: /srv/salt/install/binaries/ncbi-blast-2.6.0+-x64-linux.tar.gz
     - user: vagrant
     - group: vagrant
 blast-symlink:
@@ -38,7 +38,7 @@ blast-symlink:
 bowtie-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/bowtie-1.2.1.1-linux-x86_64.zip
+    - source: /srv/salt/install/binaries/bowtie-1.2.1.1-linux-x86_64.zip
     - user: vagrant
     - group: vagrant
 bowtie-symlink:
@@ -51,7 +51,7 @@ bowtie-symlink:
 bowtie2-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/bowtie2-2.3.2-linux-x86_64.zip
+    - source: /srv/salt/install/binaries/bowtie2-2.3.2-linux-x86_64.zip
     - user: vagrant
     - group: vagrant
 bowtie2-symlink:
@@ -64,7 +64,7 @@ bowtie2-symlink:
 fastqc-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/fastqc_v0.11.5.zip
+    - source: /srv/salt/install/binaries/fastqc_v0.11.5.zip
     - user: vagrant
     - group: vagrant
 fastqc-rename:
@@ -86,7 +86,7 @@ fastqc-symlink:
 sailfish-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/SailfishBeta-0.10.0_CentOS5.tar.gz
+    - source: /srv/salt/install/binaries/SailfishBeta-0.10.0_CentOS5.tar.gz
     - user: vagrant
     - group: vagrant
 sailfish-rename:
@@ -104,7 +104,7 @@ sailfish-symlink:
 salmon-extract:
   archive.extracted:
     - name: /usr/local/
-    - source: /home/vagrant/install/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
+    - source: /srv/salt/install/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
     - user: vagrant
     - group: vagrant
 salmon-rename:
