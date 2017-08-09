@@ -9,6 +9,9 @@ coreUtils:
       - libcurl.x86_64
       - libcurl-devel.x86_64
       - ncurses-devel.x86_64
+      - perl-Data-Dumper.x86_64
+      - perl-URI.noarch
+      - tbb.x86_64
       - unzip.x86_64
       - xz-devel.x86_64
       - zlib-devel.x86_64
