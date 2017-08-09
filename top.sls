@@ -1,5 +1,5 @@
 base:
   '*':
     - coreUtils
-#    - compBioToolsBin
+    - compBioToolsBin
     - compBioToolsSrc
