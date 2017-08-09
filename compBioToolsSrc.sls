@@ -7,7 +7,7 @@ bwa-compile:
     - user: vagrant
     - group: vagrant
   cmd.run:
-    - name: cd /srv/salt/install/tmp/bwa-0.7.15 && mak
+    - name: cd /srv/salt/install/tmp/bwa-0.7.15 && make
     - unless: ls /usr/local/bwa-0.7.15/bwa
 bwa-copy:
   # BWA don't have make install;  Move entire directory
