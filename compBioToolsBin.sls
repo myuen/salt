@@ -10,8 +10,8 @@ BBMap-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/BBMap_37.36.tar.gz
     - unless: ls /usr/local/BBMap_37.36/bbmap.sh
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 BBMap-rename:
   file.rename:
     - source: /usr/local/bbmap
@@ -32,8 +32,8 @@ blast-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/ncbi-blast-2.6.0+-x64-linux.tar.gz
     - unless: ls /usr/local/ncbi-blast-2.6.0+/bin/blastn
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 blast-symlink:
   file.symlink:
     - target: /usr/local/ncbi-blast-2.6.0+
@@ -48,8 +48,8 @@ bowtie-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/bowtie-1.2.1.1-linux-x86_64.zip
     - unless: ls /usr/local/bowtie-1.2.1.1/bowtie
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 bowtie-symlink:
   file.symlink:
     - target: /usr/local/bowtie-1.2.1.1
@@ -64,8 +64,8 @@ bowtie2-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/bowtie2-2.3.2-linux-x86_64.zip
     - unless: ls /usr/local/bowtie2-2.3.2/bowtie2
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 bowtie2-symlink:
   file.symlink:
     - target: /usr/local/bowtie2-2.3.2
@@ -80,8 +80,8 @@ fastqc-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/fastqc_v0.11.5.zip
     - unless: ls /usr/local/FastQC-0.11.5/fastqc
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 fastqc-rename:
   file.rename:
     - source: /usr/local/FastQC
@@ -109,8 +109,8 @@ sailfish-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/SailfishBeta-0.10.0_CentOS5.tar.gz
     - unless: ls /usr/local/SailfishBeta-0.10.0/bin/sailfish
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 sailfish-rename:
   file.rename:
     - source: /usr/local/SailfishBeta-0.10.0_CentOS5
@@ -132,8 +132,8 @@ salmon-extract:
     - name: /usr/local/
     - source: /srv/salt/install/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
     - unless: /usr/local/Salmon-0.8.2/bin/salmon
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
 salmon-rename:
   file.rename:
     - source: /usr/local/Salmon-0.8.2_linux_x86_64
@@ -153,10 +153,10 @@ salmon-symlink:
 bioinfo scripts:
   file.directory:
     - name: /usr/local/scripts
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
     - mode: 755
   git.latest:
     - name: git@github.com:myuen/scripts.git
-    - user: vagrant
+    - user: root
     - target: /usr/local/scripts

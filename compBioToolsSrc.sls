@@ -4,8 +4,8 @@ bwa-compile:
     - name: /srv/salt/install/tmp
     - source: /srv/salt/install/source/bwa-0.7.15.tar.bz2
     - unless: ls /usr/local/bwa-0.7.15/bwa
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
   cmd.run:
     - name: cd /srv/salt/install/tmp/bwa-0.7.15 && make
     - unless: ls /usr/local/bwa-0.7.15/bwa
@@ -40,8 +40,8 @@ cdhit-install:
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: /srv/salt/install/source/cdhit-4.6.8.tar.gz
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
     - unless: ls /usr/local/cdhit-4.6.8/cd-hit
   cmd.run:
     - name: cd /srv/salt/install/tmp/cdhit-4.6.8 && make openmp=yes
@@ -77,8 +77,8 @@ exonerate-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: /srv/salt/install/source/exonerate-2.4.0.tar.gz
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
     - unless: ls /usr/local/exonerate-2.4.0/bin/exonerate
   cmd.run:
     - name: cd /srv/salt/install/tmp/exonerate-2.4.0 && ./configure --prefix=/usr/local/exonerate-2.4.0 && make && sudo make install
@@ -104,8 +104,8 @@ samtools-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: /srv/salt/install/source/samtools-1.5.tar.bz2
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
     - unless: ls /usr/local/samtools-1.5/bin/samtools
   cmd.run:
     - name: cd /srv/salt/install/tmp/samtools-1.5 && ./configure --prefix=/usr/local/samtools-1.5 && make && sudo make install
@@ -130,8 +130,8 @@ trinity-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: /srv/salt/install/source/Trinity-v2.4.0.tar.gz
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
     - unless: /usr/local/Trinity-v2.4.0/Trinity
   cmd.run:
     - name: cd /srv/salt/install/tmp/trinityrnaseq-Trinity-v2.4.0 && make
@@ -157,8 +157,8 @@ transdecoder-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: /srv/salt/install/source/v3.0.1.tar.gz
-    - user: vagrant
-    - group: vagrant
+    - user: root
+    - group: root
     - unless: ls /usr/local/TransDecoder-3.0.1/TransDecoder.LongOrfs
   cmd.run:
     - name: cd /srv/salt/install/tmp/TransDecoder-3.0.1 && make
