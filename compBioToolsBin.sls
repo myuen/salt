@@ -150,13 +150,15 @@ salmon-symlink:
 
 
 ### Scripts
-bioinfo scripts:
-  file.directory:
-    - name: /usr/local/scripts
-    - user: root
-    - group: root
-    - mode: 755
-  git.latest:
-    - name: git@github.com:myuen/scripts.git
-    - user: root
-    - target: /usr/local/scripts
+# bioinfo scripts:
+#   file.directory:
+#     - name: /usr/local/scripts
+#     - user: root
+#     - group: root
+#     - mode: 755
+#   git.latest:
+#     - name: git@github.com:myuen/scripts.git
+#     - user: root
+#     - https_user
+#     - identity: /home/myuen/.ssh/id_ed25519.pub
+#     - target: /usr/local/scripts
