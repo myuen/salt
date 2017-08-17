@@ -8,6 +8,7 @@
 BBMap-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux/binaries/BBMap_37.36.tar.gz
     - source: /srv/salt/install/binaries/BBMap_37.36.tar.gz
     - unless: ls /usr/local/BBMap_37.36/bbmap.sh
     - user: root
@@ -30,6 +31,7 @@ BBMap-symlink:
 blast-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux/binaries/ncbi-blast-2.6.0+-x64-linux.tar.gz
     - source: /srv/salt/install/binaries/ncbi-blast-2.6.0+-x64-linux.tar.gz
     - unless: ls /usr/local/ncbi-blast-2.6.0+/bin/blastn
     - user: root
@@ -46,6 +48,7 @@ blast-symlink:
 bowtie-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux//binaries/bowtie-1.2.1.1-linux-x86_64.zip
     - source: /srv/salt/install/binaries/bowtie-1.2.1.1-linux-x86_64.zip
     - unless: ls /usr/local/bowtie-1.2.1.1/bowtie
     - user: root
@@ -62,6 +65,7 @@ bowtie-symlink:
 bowtie2-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux/binaries/bowtie2-2.3.2-linux-x86_64.zip
     - source: /srv/salt/install/binaries/bowtie2-2.3.2-linux-x86_64.zip
     - unless: ls /usr/local/bowtie2-2.3.2/bowtie2
     - user: root
@@ -78,6 +82,7 @@ bowtie2-symlink:
 fastqc-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux/binaries/fastqc_v0.11.5.zip
     - source: /srv/salt/install/binaries/fastqc_v0.11.5.zip
     - unless: ls /usr/local/FastQC-0.11.5/fastqc
     - user: root
@@ -107,6 +112,7 @@ fastqc-symlink:
 sailfish-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux/binaries/SailfishBeta-0.10.0_CentOS5.tar.gz
     - source: /srv/salt/install/binaries/SailfishBeta-0.10.0_CentOS5.tar.gz
     - unless: ls /usr/local/SailfishBeta-0.10.0/bin/sailfish
     - user: root
@@ -130,6 +136,7 @@ sailfish-symlink:
 salmon-extract:
   archive.extracted:
     - name: /usr/local/
+    - source: salt://linux/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
     - source: /srv/salt/install/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
     - unless: /usr/local/Salmon-0.8.2/bin/salmon
     - user: root

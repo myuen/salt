@@ -2,7 +2,8 @@
 bwa-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
-    - source: /srv/salt/install/source/bwa-0.7.15.tar.bz2
+    - source: salt://linux/sources/bwa-0.7.15.tar.bz2
+    - source: /srv/salt/install/sources/bwa-0.7.15.tar.bz2
     - unless: ls /usr/local/bwa-0.7.15/bwa
     - user: root
     - group: root
@@ -39,7 +40,8 @@ bwa-symlink:
 cdhit-install:
   archive.extracted:
     - name: /srv/salt/install/tmp
-    - source: /srv/salt/install/source/cdhit-4.6.8.tar.gz
+    - source: salt://linux/sources/cdhit-4.6.8.tar.gz
+    - source: /srv/salt/install/sources/cdhit-4.6.8.tar.gz
     - user: root
     - group: root
     - unless: ls /usr/local/cdhit-4.6.8/cd-hit
@@ -76,7 +78,8 @@ cdhit-symlink:
 exonerate-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
-    - source: /srv/salt/install/source/exonerate-2.4.0.tar.gz
+    - source: salt://linux/sources/exonerate-2.4.0.tar.gz
+    - source: /srv/salt/install/sources/exonerate-2.4.0.tar.gz
     - user: root
     - group: root
     - unless: ls /usr/local/exonerate-2.4.0/bin/exonerate
@@ -103,7 +106,8 @@ exonerate-symlink:
 samtools-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
-    - source: /srv/salt/install/source/samtools-1.5.tar.bz2
+    - source: salt://linux/sources/samtools-1.5.tar.bz2
+    - source: /srv/salt/install/sources/samtools-1.5.tar.bz2
     - user: root
     - group: root
     - unless: ls /usr/local/samtools-1.5/bin/samtools
@@ -129,7 +133,8 @@ samtools-symlink:
 trinity-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
-    - source: /srv/salt/install/source/Trinity-v2.4.0.tar.gz
+    - source: salt://linux/sources/Trinity-v2.4.0.tar.gz
+    - source: /srv/salt/install/sources/Trinity-v2.4.0.tar.gz
     - user: root
     - group: root
     - unless: /usr/local/Trinity-v2.4.0/Trinity
@@ -156,7 +161,8 @@ trinity-symlink:
 transdecoder-compile:
   archive.extracted:
     - name: /srv/salt/install/tmp
-    - source: /srv/salt/install/source/v3.0.1.tar.gz
+    - source: salt://linux/sources/v3.0.1.tar.gz
+    - source: /srv/salt/install/sources/v3.0.1.tar.gz
     - user: root
     - group: root
     - unless: ls /usr/local/TransDecoder-3.0.1/TransDecoder.LongOrfs
