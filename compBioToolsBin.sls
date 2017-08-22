@@ -24,7 +24,7 @@ BBMap-symlink:
     - target: /usr/local/BBMap_37.36
     - name: /usr/local/BBMap
     - onchanges: 
-      - BBMap-rename
+      - BBMap-extract
     - force: True
 
 ### BLAST
@@ -63,6 +63,8 @@ bowtie-symlink:
 
 ### Bowtie2
 bowtie2-extract:
+  require:
+    - pkg: tbb
   archive.extracted:
     - name: /usr/local/
     - source: salt://linux/binaries/bowtie2-2.3.2-linux-x86_64.zip
@@ -80,11 +82,13 @@ bowtie2-symlink:
 
 ### FastQC
 fastqc-extract:
+  require:
+    - pkg: java
   archive.extracted:
     - name: /usr/local/
-    - source: salt://linux/binaries/fastqc_v0.11.5.zip
+    - source: salt://linux/binaries/fastqc_v0.11.5.zip 
     - source: /srv/salt/install/binaries/fastqc_v0.11.5.zip
-    - unless: ls /usr/local/FastQC-0.11.5/fastqc
+    - unless: ls /usr/local/FastQC_0.11.5/fastqc
     - user: root
     - group: root
 fastqc-rename:
@@ -99,7 +103,7 @@ fastqc-symlink:
     - name: /usr/local/FastQC
     - force: True
     - onchanges:
-      - fastqc-rename
+      - fastqc-extract
 # fastqc is not executable by default, change to mode 755
 /usr/local/FastQC_0.11.5/fastqc:
     file.managed:
@@ -129,7 +133,7 @@ sailfish-symlink:
     - name: /usr/local/Sailfish
     - force: True
     - onchanges:
-      - sailfish-rename
+      - sailfish-extract
 
 
 ### Salmon
@@ -138,7 +142,7 @@ salmon-extract:
     - name: /usr/local/
     - source: salt://linux/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
     - source: /srv/salt/install/binaries/Salmon-0.8.2_linux_x86_64.tar.gz
-    - unless: /usr/local/Salmon-0.8.2/bin/salmon
+    - unless: ls /usr/local/Salmon-0.8.2/bin/salmon
     - user: root
     - group: root
 salmon-rename:
@@ -153,7 +157,7 @@ salmon-symlink:
     - name: /usr/local/Salmon
     - force: True
     - onchanges:
-      - salmon-rename
+      - salmon-extract
 
 
 ### Scripts
