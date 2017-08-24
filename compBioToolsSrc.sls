@@ -1,5 +1,7 @@
 ### BWA
 bwa-compile:
+  require:
+    - pkg: zlib
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: salt://linux/sources/bwa-0.7.15.tar.bz2
@@ -76,6 +78,8 @@ cdhit-symlink:
 
 ### Exonerate
 exonerate-compile:
+  require:
+    - pkg: glib2
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: salt://linux/sources/exonerate-2.4.0.tar.gz
@@ -104,6 +108,11 @@ exonerate-symlink:
 
 ### Samtools
 samtools-compile:
+  require:
+    - pkg: curl
+    - pkg: ncurses-devel
+    - pkg: ssl
+    - pkg: xz
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: salt://linux/sources/samtools-1.5.tar.bz2
@@ -131,26 +140,35 @@ samtools-symlink:
 
 ### Trinity
 trinity-compile:
+  require:
+    - pkg: perl-trinity
   archive.extracted:
     - name: /srv/salt/install/tmp
     - source: salt://linux/sources/Trinity-v2.4.0.tar.gz
     - source: /srv/salt/install/sources/Trinity-v2.4.0.tar.gz
     - user: root
     - group: root
-    - unless: /usr/local/Trinity-v2.4.0/Trinity
+    - unless: ls /usr/local/Trinity-2.4.0/Trinity
   cmd.run:
     - name: cd /srv/salt/install/tmp/trinityrnaseq-Trinity-v2.4.0 && make
-    - unless: /usr/local/Trinity-v2.4.0/Trinity
+    - unless: ls /usr/local/Trinity-2.4.0/Trinity
 trinity-copy:
   # trinity don't have make install;  Move entire directory to /usr/local
   file.copy:
     - source: /srv/salt/install/tmp/trinityrnaseq-Trinity-v2.4.0
-    - name: /usr/local/Trinity-v2.4.0
+    - name: /usr/local/Trinity-2.4.0
     - onchanges:
       - trinity-compile
+trinity-cleanup:
+   # Need to clean up tmp directory
+  file.directory:
+    - name: /srv/salt/install/tmp/
+    - clean: True
+    - onchanges:
+      - trinity-copy
 trinity-symlink:
   file.symlink:
-    - target: /usr/local/Trinity-v2.4.0
+    - target: /usr/local/Trinity-2.4.0
     - name: /usr/local/Trinity
     - force: True
     - onchanges:
