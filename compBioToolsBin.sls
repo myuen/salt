@@ -111,6 +111,23 @@ fastqc-symlink:
       - onchanges:
         - fastqc-extract
 
+### Minimap2
+minimap2-extract:
+  archive.extracted:
+    - name: /usr/local/
+    - source: salt://linux/binaries/minimap2-2.1.1_x64-linux.tar.bz2
+    - source: /srv/salt/install/binaries/minimap2-2.1.1_x64-linux.tar.bz2
+    - unless: ls /usr/local/minimap2-2.1.1_x64-linux/minimap2
+    - user: root
+    - group: root
+minimap2-symlink:
+  file.symlink:
+    - target: /usr/local/minimap2-2.1.1_x64-linux
+    - name: /usr/local/minimap2
+    - force: True
+    - onchanges:
+      - minimap2-extract
+
 
 ### Sailfish
 sailfish-extract:
