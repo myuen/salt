@@ -115,6 +115,34 @@ exonerate-symlink:
       - exonerate-cleanup
 
 
+### HMMER
+hmmer-compile:
+  archive.extracted:
+    - name: /srv/salt/install/tmp
+    - source: salt://software/linux/sources/hmmer-3.1b2-linux-intel-x86_64.tar.gz
+    - source: /srv/salt/install/sources/hmmer-3.1b2-linux-intel-x86_64.tar.gz
+    - user: root
+    - group: root
+    - unless: ls /usr/local/hmmer-3.1b2/bin/hmmscan
+  cmd.run:
+    - name: cd /srv/salt/install/tmp/hmmer-3.1b2-linux-intel-x86_64 && ./configure --prefix=/usr/local/hmmer-3.1b2 --enable-sse && make && sudo make install
+    - unless: ls /usr/local/hmmer-3.1b2/bin/hmmscan
+hmmer-cleanup:
+  # Cleanup tmp directory
+  file.directory:
+    - name: /srv/salt/install/tmp/
+    - clean: True
+    - onchanges:
+      - archive: hmmer-compile
+hmmer-symlink:
+  file.symlink:
+    - target: /usr/local/hmmer-3.1b2
+    - name: /usr/local/hmmer
+    - force: True
+    - watch:
+      - hmmer-cleanup
+
+
 ### Samtools
 samtools-compile:
   require:
