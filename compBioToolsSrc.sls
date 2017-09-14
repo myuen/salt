@@ -1,3 +1,12 @@
+### General workflow for installing source.
+# 1. Extract archive to /srv/salt/install/tmp
+# 2. Compile source code
+# 3. Move binaries to /usr/local
+# 4. (Optional) Rename directory to include version number
+# 5. Add symlink to /usr/local/
+# 6. Cleanup /srv/salt/install/tmp
+
+
 ### BWA
 bwa-compile:
   require:
@@ -17,7 +26,7 @@ bwa-copy:
   file.copy:
     - source: /srv/salt/install/tmp/bwa-0.7.15
     - name: /usr/local/bwa-0.7.15
-    - watch:
+    - onchanges:
       - archive: bwa-compile
 bwa-cleanup:
    # Need to clean up tmp directory
@@ -25,7 +34,7 @@ bwa-cleanup:
     - name: /srv/salt/install/tmp/
     - clean: True
     - watch:
-      - archive: bwa-copy
+      - bwa-copy
 bwa-symlink:
    # Symlink always points to the latest version of the software
    # Users will always be using the latest as long as the symlink is
@@ -35,7 +44,7 @@ bwa-symlink:
     - name: /usr/local/bwa
     - force: True
     - watch:
-      - archive: bwa-cleanup
+      - bwa-copy
 
 
 ### CDHIT
@@ -55,14 +64,14 @@ cdhit-copy:
   file.copy:
     - source: /srv/salt/install/tmp/cdhit-4.6.8
     - name: /usr/local/cdhit-4.6.8
-    - watch:
+    - onchanges:
       - archive: cdhit-install
 cdhit-cleanup:
    # clean up tmp directory
   file.directory:
     - name: /srv/salt/install/tmp/
     - clean: True
-    - onchanges:
+    - watch:
       - cdhit-copy
 cdhit-symlink:
    # Symlink always points to the latest version of the software
@@ -72,7 +81,7 @@ cdhit-symlink:
     - target: /usr/local/cdhit-4.6.8
     - name: /usr/local/cdhit
     - force: True
-    - onchanges:
+    - watch:
       - cdhit-copy
 
 
@@ -95,15 +104,15 @@ exonerate-cleanup:
   file.directory:
     - name: /srv/salt/install/tmp/
     - clean: True
-    - watch:
-      - extract: exonerate-compile
+    - onchanges:
+      - archive: exonerate-compile
 exonerate-symlink:
   file.symlink:
     - target: /usr/local/exonerate-2.4.0
     - name: /usr/local/exonerate
     - force: True
     - watch:
-      - archive: exonerate-cleanup
+      - exonerate-cleanup
 
 
 ### Samtools
@@ -127,7 +136,7 @@ samtools-cleanup:
   file.directory:
     - name: /srv/salt/install/tmp/
     - clean: True
-    - watch:
+    - onchanges:
       - archive: samtools-compile
 samtools-symlink:
   file.symlink:
@@ -135,7 +144,7 @@ samtools-symlink:
     - name: /usr/local/samtools
     - force: True
     - watch:
-      - archive: samtools-cleanup
+      - samtools-cleanup
 
 
 ### Trinity
@@ -157,7 +166,7 @@ trinity-copy:
   file.copy:
     - source: /srv/salt/install/tmp/trinityrnaseq-Trinity-v2.4.0
     - name: /usr/local/Trinity-2.4.0
-    - watch:
+    - onchanges:
       - archive: trinity-compile
 trinity-cleanup:
    # Need to clean up tmp directory
@@ -165,14 +174,14 @@ trinity-cleanup:
     - name: /srv/salt/install/tmp/
     - clean: True
     - watch:
-      - archive: trinity-copy
+      - trinity-copy
 trinity-symlink:
   file.symlink:
     - target: /usr/local/Trinity-2.4.0
     - name: /usr/local/Trinity
     - force: True
     - watch:
-      - archive: trinity-copy
+      - trinity-copy
 
 
 ### TransDecoder
@@ -193,7 +202,7 @@ transdecoder-copy:
   file.copy:
     - source: /srv/salt/install/tmp/TransDecoder-3.0.1
     - name: /usr/local/TransDecoder-3.0.1
-    - watch:
+    - onchanges:
       - archive: transdecoder-compile
 transdecoder-symlink:
   file.symlink:
@@ -201,4 +210,4 @@ transdecoder-symlink:
     - name: /usr/local/TransDecoder
     - force: True
     - watch:
-      - archive: transdecoder-copy
+      - transdecoder-copy
